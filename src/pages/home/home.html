@@ -1,21 +1,28 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Nutri 1000
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2 style="text-align: center;">Entrar</h2>
+  <img class="logo" src="assets/imgs/LogoNutri.png"/>
+
   <ion-item>
-    <ion-label stacked>Usuario: </ion-label>
+    <ion-label floating> 
+      <ion-icon ios="ios-person" md ="md-person"></ion-icon> E-mail: 
+    </ion-label>
     <ion-input type="text" #usuario></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label stacked>Senha: </ion-label>
+    <ion-label floating>
+      <ion-icon ios="ios-lock" md="md-lock"></ion-icon> Senha: 
+    </ion-label>
     <ion-input type="password" #senha></ion-input>
   </ion-item>
-  <button ion-button block (click)="entrar()">Logar</button>
-  <button ion-button block (click)="cadastrar()">Cadastrar</button>
+  <button class="botao" ion-button block (click)="entrar()">Logar</button>
+  <p class="textos"><a (click)="cadastrar()" >Criar uma conta</a></p>
+  <p class="textos"><a (click)="cadastrar()" >Esqueci minha senha</a></p>
+
 </ion-content>
