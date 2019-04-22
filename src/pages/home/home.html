@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2 style="text-align: center;">Entrar</h2>
+  <ion-item>
+    <ion-label stacked>Usuario: </ion-label>
+    <ion-input type="text" #usuario></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Senha: </ion-label>
+    <ion-input type="password" #senha></ion-input>
+  </ion-item>
+  <button ion-button block (click)="entrar()">Logar</button>
+  <button ion-button block (click)="cadastrar()">Cadastrar</button>
+</ion-content>
