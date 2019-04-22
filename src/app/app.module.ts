@@ -6,31 +6,26 @@ import { StatusBar } from '@ionic-native/status-bar';
 import {DicasPage} from '../pages/dicas/dicas'
 import {RegisterPage} from '../pages/register/register'
 
-import { MyApp } from './app.component';
+import { MyApp, } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
+import { RecuperarPage } from '../pages/recuperar/recuperar';
+import { FireBase } from './fireBaseAuth';
 
-const fireBaseAuth = {
-  apiKey: "AIzaSyD8Lzwso8EqmHz_Z3evOhxRalgb0SNby3k",
-  authDomain: "nutri-8be3f.firebaseapp.com",
-  databaseURL: "https://nutri-8be3f.firebaseio.com",
-  projectId: "nutri-8be3f",
-  storageBucket: "nutri-8be3f.appspot.com",
-  messagingSenderId: "255775091313"
-};
-
+const fireAuth = FireBase.fireBaseAuth;
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     DicasPage,
-    RegisterPage
+    RegisterPage,
+    RecuperarPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(fireBaseAuth),
+    AngularFireModule.initializeApp(fireAuth),
     AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
@@ -38,7 +33,8 @@ const fireBaseAuth = {
     MyApp,
     HomePage,
     DicasPage,
-    RegisterPage
+    RegisterPage,
+    RecuperarPage
     
   ],
   providers: [

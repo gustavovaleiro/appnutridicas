@@ -1,0 +1,25 @@
+page-recuperar {
+    .textos{
+        color: #000;
+        background: none;
+        text-align:  center;
+        a{
+            color: #000;
+        }
+    }
+
+    .botao{
+        border-radius:  30px !important;
+        margin-top: 10px;
+    }
+
+    ion-item{
+        border-radius: 30px !important;
+        padding-left: 10px !important;
+        margin-bottom: 10px;
+        color: "primary";
+        background-color: "primary";
+        opacity: 1;
+        font-size: 0.9em;
+    }
+}
