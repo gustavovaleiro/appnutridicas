@@ -21,7 +21,13 @@
     </ion-label>
     <ion-input type="password" #senha></ion-input>
   </ion-item>
-  <button class="botao" ion-button block (click)="entrar()">Logar</button>
+  <button class="botao"   ion-button block (click)="entrar()">Logar</button>
+  <button class="botao"   ion-button block (click)="loginWithFacebook()" icon-start>
+    <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>Login com Facebook
+  </button>
+  <button class="botao"   ion-button block (click)="loginVisitante()" color="danger">
+    Entrar como visitante 
+  </button>
   <p class="textos"><a (click)="cadastrar()" >Criar uma conta</a></p>
   <p class="textos"><a (click)="recuperar()" >Esqueci minha senha</a></p>
 

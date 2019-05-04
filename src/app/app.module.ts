@@ -11,9 +11,9 @@ import { HomePage } from '../pages/home/home';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import { RecuperarPage } from '../pages/recuperar/recuperar';
-import { FireBase } from './fireBaseAuth';
+import { FireBaseAuth } from './fireBaseAuth';
 
-const fireAuth = FireBase.fireBaseAuth;
+
 @NgModule({
   declarations: [
     MyApp,
@@ -25,7 +25,7 @@ const fireAuth = FireBase.fireBaseAuth;
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(fireAuth),
+    AngularFireModule.initializeApp(FireBaseAuth),
     AngularFireAuthModule
   ],
   bootstrap: [IonicApp],

@@ -5,6 +5,7 @@ import { RegisterPage } from '../register/register';
 import { Users } from './users';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { RecuperarPage } from '../recuperar/recuperar';
+import fireBase from 'firebase';
 
 
 @Component({
@@ -53,5 +54,30 @@ export class HomePage {
 
   recuperar(){
     this.navCtrl.push(RecuperarPage);
+  }
+
+  loginWithFacebook(){
+    this.fire.auth.signInWithPopup(new fireBase.auth.FacebookAuthProvider())
+    .then(res => {
+      this.navCtrl.setRoot(DicasPage);
+    });
+  }
+  loginVisitante(){
+    let toast = this.toastCtrl.create({duration: 3000, position: 'bottom'});
+    this.fire.auth.signInAnonymously()
+    .then( data =>{
+      this.navCtrl.setRoot(DicasPage);
+    })
+    .catch((error: any) => {
+
+      if(error.code == 'auth/operation-not-allowed'){
+        toast.setMessage('Operação não permitida');
+      } if(error.code == 'auth/user-disabled'){
+        toast.setMessage('Usuário desativado.');
+      } else {
+        console.log('Error', error);
+      }
+      toast.present();
+    });
   }
 }

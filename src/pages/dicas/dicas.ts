@@ -18,17 +18,29 @@ import { HomePage } from '../home/home';
 export class DicasPage {
 
   email: string;
+  fotoPerfil: boolean = false;
+  facebook = {
+    nome: '',
+    fotoURL: '',
+  }
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public toastCtrl: ToastController,
-    public fireAuth: AngularFireAuth) {
+    public fire: AngularFireAuth) {
 
-    this.email = fireAuth.auth.currentUser.email;
+    this.email = fire.auth.currentUser.email;
+
+    this.facebook.nome = fire.auth.currentUser.displayName;
+    this.facebook.fotoURL = fire.auth.currentUser.photoURL;
+    if(this.facebook.fotoURL == null)
+      this.fotoPerfil = false;
+    else
+      this.fotoPerfil = true;
   }
 
   logout(){
     let toast = this.toastCtrl.create({duration: 3000, position: 'bottom'})
-    this.fireAuth.auth.signOut();
+    this.fire.auth.signOut();
     toast.setMessage('Deslogado com sucesso!');
     toast.present();
     this.navCtrl.setRoot(HomePage);
