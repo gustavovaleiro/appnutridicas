@@ -72,8 +72,6 @@ export class HomePage {
 
       if(error.code == 'auth/operation-not-allowed'){
         toast.setMessage('Operação não permitida');
-      } if(error.code == 'auth/user-disabled'){
-        toast.setMessage('Usuário desativado.');
       } else {
         console.log('Error', error);
       }
