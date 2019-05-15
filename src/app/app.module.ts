@@ -12,6 +12,8 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import { RecuperarPage } from '../pages/recuperar/recuperar';
 import { FireBaseAuth } from './fireBaseAuth';
+import { HttpModule } from '@angular/http';
+import { WordpressService } from '../services/wordpress.services';
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { FireBaseAuth } from './fireBaseAuth';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FireBaseAuth),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -40,6 +43,7 @@ import { FireBaseAuth } from './fireBaseAuth';
   providers: [
     StatusBar,
     SplashScreen,
+    WordpressService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
