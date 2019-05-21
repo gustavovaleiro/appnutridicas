@@ -14,6 +14,8 @@ import { RecuperarPage } from '../pages/recuperar/recuperar';
 import { FireBaseAuth } from './fireBaseAuth';
 import { HttpModule } from '@angular/http';
 import { WordpressService } from '../services/wordpress.services';
+import { TabsPage } from '../pages/tabs/tabs';
+import { ProfilePage } from '../pages/profile/profile';
 
 
 @NgModule({
@@ -22,14 +24,16 @@ import { WordpressService } from '../services/wordpress.services';
     HomePage,
     DicasPage,
     RegisterPage,
-    RecuperarPage
+    RecuperarPage,
+    ProfilePage,
+    TabsPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FireBaseAuth),
     AngularFireAuthModule,
-    HttpModule
+    HttpModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -37,7 +41,9 @@ import { WordpressService } from '../services/wordpress.services';
     HomePage,
     DicasPage,
     RegisterPage,
-    RecuperarPage
+    RecuperarPage,
+    ProfilePage,
+    TabsPage
     
   ],
   providers: [

@@ -10,7 +10,7 @@ export class WordpressService{
 
     //puxando posts recentes da url usada
     getRecentsPosts(page: number = 1){
-        return this.http.get(WORDPRESS_REST_API_URL + "?page="+page)
+        return this.http.get(WORDPRESS_REST_API_URL + "posts?page="+page)
         .map(res => res.json());
     }
 

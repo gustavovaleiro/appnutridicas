@@ -6,6 +6,7 @@ import { Users } from './users';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { RecuperarPage } from '../recuperar/recuperar';
 import fireBase from 'firebase';
+import { TabsPage } from '../tabs/tabs';
 
 
 @Component({
@@ -17,14 +18,31 @@ export class HomePage {
   @ViewChild('senha') password;
   
   users: Users = new Users();
-
+  tabBarElement: any;
 
   constructor(public navCtrl: NavController, 
     public toastCtrl: ToastController,
     public fire: AngularFireAuth) {
- 
+    this.tabBarElement = document.querySelector('.show-tabbar');
   }
 
+  ionViewWillLeave(){
+    let tabs = document.querySelectorAll('.show-tabbar');
+    if(tabs!==null){
+      Object.keys(tabs).map((key) =>{
+        tabs[key].style.display='none';
+      });
+    }
+  }
+
+  ngAfterViewInit(){
+  let tabs = document.querySelectorAll('.show-tabbar');
+    if(tabs!==null){
+      Object.keys(tabs).map((key) =>{
+        tabs[key].style.display='none';
+      });
+    }
+  }
   entrar(){
     let toast = this.toastCtrl.create({duration: 3000, position: 'bottom'});
     this.fire.auth.signInWithEmailAndPassword(this.email.value, this.password.value)
@@ -32,7 +50,7 @@ export class HomePage {
       console.log('Data de login: ', data);
       this.users.email = this.email.value;
       this.users.senha = this.password.value;
-      this.navCtrl.setRoot(DicasPage);
+      this.navCtrl.setRoot(TabsPage);
     })
     .catch((error: any) => {
 
@@ -59,14 +77,14 @@ export class HomePage {
   loginWithFacebook(){
     this.fire.auth.signInWithPopup(new fireBase.auth.FacebookAuthProvider())
     .then(res => {
-      this.navCtrl.setRoot(DicasPage);
+      this.navCtrl.setRoot(TabsPage);
     });
   }
   loginVisitante(){
     let toast = this.toastCtrl.create({duration: 3000, position: 'bottom'});
     this.fire.auth.signInAnonymously()
     .then( data =>{
-      this.navCtrl.setRoot(DicasPage);
+      this.navCtrl.setRoot(TabsPage);
     })
     .catch((error: any) => {
 

@@ -1,8 +1,13 @@
 
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color = "primary">
     <ion-title>Meu Perfil</ion-title>
-  </ion-navbar>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="logout()">
+        <ion-icon class="toolbar-icon" name = "log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+     </ion-navbar>
 </ion-header>
 
 <ion-content padding>
@@ -15,8 +20,10 @@
   </ion-item>
   <ion-item *ngIf="!fotoPerfil">
     <ion-thumbnail>
+      <img src="assets/imgs/fotoPerfil.png">
+      </ion-thumbnail>
         <h2>Nutri 1000</h2>
         <p>{{email}}</p>
-    </ion-thumbnail>
+    
   </ion-item>
 </ion-content>

@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { DicasPage } from '../dicas/dicas';
+import { TabsPage } from '../tabs/tabs';
 
 
 @IonicPage()
@@ -12,16 +13,33 @@ import { DicasPage } from '../dicas/dicas';
 export class RegisterPage {
   @ViewChild('usuario') email;
   @ViewChild('senha') password;
+
+  tabsBarElement: any;
   constructor(public navCtrl: NavController,
      public navParams: NavParams,
      public fire: AngularFireAuth, 
      public toastCtrl: ToastController) {
+       this.tabsBarElement = document.querySelector('.show-tabbar');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
 
+  ionViewWillEnter(){
+    let tabs = document.querySelectorAll('.show-tabbar');
+    if(tabs==null){
+      this.tabsBarElement.style.display='none';
+    }
+  }
+  ionViewWillLeave(){
+    let tabs = document.querySelectorAll('.show-tabbar');
+    if(tabs!==null){
+      Object.keys(tabs).map((key) =>{
+        tabs[key].style.display='none';
+      });
+    }
+  }
   registrar(){
     //config da notificação
     let toast = this.toastCtrl.create({duration: 3000, position: 'bottom'});
@@ -31,7 +49,7 @@ export class RegisterPage {
         console.log('Data do login: ', data);
         toast.setMessage('Usuario registrado com sucesso');
         toast.present();
-        this.navCtrl.setRoot(DicasPage);
+        this.navCtrl.setRoot(TabsPage);
       })
       .catch((error: any) => {
         if(error.code == 'auth/email-already-in-use'){
@@ -45,7 +63,7 @@ export class RegisterPage {
         }
         toast.present();
       });
-
   }
+
 
 }

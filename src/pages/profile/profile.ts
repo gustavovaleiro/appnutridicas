@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the ProfilePage page.
@@ -35,5 +36,13 @@ export class ProfilePage {
       this.fotoPerfil = false;
     else
       this.fotoPerfil = true;
+  }
+
+  logout(){
+    let toast = this.toastCtrl.create({duration: 3000, position: 'bottom'})
+    this.fire.auth.signOut();
+    toast.setMessage('Deslogado com sucesso!');
+    toast.present();
+    this.navCtrl.setRoot(HomePage);
   }
 }

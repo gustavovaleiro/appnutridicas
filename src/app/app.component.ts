@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { DicasPage } from '../pages/dicas/dicas';
+import { TabsPage } from '../pages/tabs/tabs';
 
 
 
@@ -21,7 +22,7 @@ export class MyApp {
     afAuth: AngularFireAuth ) {
     const authObserver = afAuth.authState.subscribe( users =>{
       if(users){
-        this.rootPage = DicasPage;
+        this.rootPage = TabsPage;
         authObserver.unsubscribe();
       } else {
         this.rootPage = HomePage;
